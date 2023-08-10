@@ -7,12 +7,14 @@ export class KudosController {
 
 
     @Post('give_kudos')
-    give_kudos(@Req() req, @Res() res) {
-        return this.kudosService.kudos_team(req)
+    give_kudos(@Req() req) {
+        this.kudosService.kudos_team(req)
+        return "Kudo request recieved!"
     }
 
     @Post('replace_kudo')
-    replace_kudo(@Req() req, @Res() res) {
-        return this.kudosService.replace_kudo(req)
+    replace_kudo(@Req() req) {
+        this.kudosService.replace_kudo(req)
+        return "Kudo request recieved!"
     }
 }
