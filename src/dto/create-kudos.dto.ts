@@ -10,13 +10,15 @@ export class CreateKudosDto {
     @IsArray()
     readonly kudos_container?: [
         {
+            readonly kudo_sender_name?: string,
             readonly kudo_sender_uid?: string,
-            readonly kudo_recipient?: string,
-            readonly kudo_message?: string,
+            readonly kudo_recipient_name?: string,
+            readonly kudo_recipient_uid?: string,
+            kudo_message?: string,
             readonly kudo_uid?: string,
             readonly created_at?: Date,
-            readonly updated_at?: Date,
-            readonly update_count?: number,
+            updated_at?: Date,
+            update_count?: number,
             readonly channel_id?: string,
         }
     ]
