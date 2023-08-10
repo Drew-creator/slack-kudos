@@ -97,7 +97,9 @@ export class KudosService {
                 }
             }
 
-            await this.update_kudos_team(team_id, update_condition)
+            this.update_kudos_team(team_id, update_condition)
+
+            // return {status: 200, message: `kudo with id - ${kudos_team.kudos_container[0].kudo_uid} created`}
 
             console.log(kudos_record)
         } else { 
@@ -164,9 +166,8 @@ export class KudosService {
             }
 
             await this.update_kudos_team(team_id, kudos_record)
+            // return {status: 200, message: `kudo with id - ${kudos_obj.kudo_uid} created`}
         }
-
-        return {status: 200}
     }
 
     async replace_kudo(req) {
@@ -228,7 +229,7 @@ export class KudosService {
         await this.update_kudos_team(team_id, kudos_team_obj);
 
         console.log(req.body)
-        return {status: 200}
+        // return {status: 200}
     }
 
     async create_kudos_team(createKudosDto: CreateKudosDto) : Promise<IKudos> {
