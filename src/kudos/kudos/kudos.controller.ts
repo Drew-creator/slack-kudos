@@ -23,4 +23,10 @@ export class KudosController {
         this.kudosService.delete_kudo(req)
         return
     }
+
+    @Post('list_kudos')
+    list_kudos(@Req() req) {
+        this.kudosService.list_recent_n_kudos(req);
+        return
+    }
 }
