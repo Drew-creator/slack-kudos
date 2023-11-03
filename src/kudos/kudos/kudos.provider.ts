@@ -35,8 +35,8 @@ export class KudosService {
             return
         }
 
-        const recipient_name: string = text.split(' ')[0].slice(2, text.split(' ')[0].length - 3).split("|")[1];
-        const recipient_uid: string = text.split(' ')[0].slice(2, text.split(' ')[0].length - 3).split("|")[0];
+        const recipient_name: string = text.split(' ')[0].slice(2, text.split(' ')[0].length - 1).split("|")[1];
+        const recipient_uid: string = text.split(' ')[0].slice(2, text.split(' ')[0].length - 1).split("|")[0];
 
         let kudo_message: string = text.split(' ').slice(1).join(' ');
         kudo_message = kudo_message.slice(4, kudo_message.length - 4); // extract text between &lt; &gt;
@@ -275,11 +275,11 @@ export class KudosService {
             is_enterprise_install,
         } = req.body;
 
-        const kudo_text_pattern = new RegExp('^-?\d+$');
+        const kudo_text_pattern = new RegExp('kudos_[a-z0-9]{9}');
         
         // check for proper command input formatting
         if (!kudo_text_pattern.test(text)) {
-            this.send_response_message_to_user(response_url, `Please follow the formatting rules. Example: /list_ 10`);
+            this.send_response_message_to_user(response_url, `Please follow the formatting rules. Example: /delete_kudo kudos_123`);
             return
         }
 
@@ -297,6 +297,8 @@ export class KudosService {
 
         const kudo_id:string = text;
         const kudos_team_obj:CreateKudosDto = await this.find_kudos_team(team_id);
+
+        console.log(kudo_id)
 
         let kudo_exists:boolean = false;
 
